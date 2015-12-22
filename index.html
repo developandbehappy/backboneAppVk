@@ -22,6 +22,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="/#/">Home</a></li>
                         <li><a href="/#/authByToken">Auth</a></li>
+
                     </ul>
                 </div>
             </div>
@@ -48,7 +49,12 @@
     <h1>home</h1>
 </script>
 <script id="authByTokenTpl" type="text/x-handlebars-template">
-    <h1>authByToken</h1>
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="Gimme token" id="tokenInput">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" id="tokenButton">Go!</button>
+      </span>
+    </div>
 </script>
 </body>
 </html>
