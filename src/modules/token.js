@@ -2,7 +2,14 @@ var app = app || {};
 var Backbone = Backbone || {};
 
 app.token = {
+  name: 'token',
   isValid: function () {
-    return false;
+    return Boolean(this.getToken());
+  },
+  getToken: function () {
+    return store.get(this.name);
+  },
+  saveToken: function (token) {
+    store.set(this.name, token);
   }
 };

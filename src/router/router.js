@@ -17,7 +17,6 @@ app.Router = Backbone.Router.extend({
     }
   },
   authByToken: function () {
-
     this.authByToken.render();
   },
   isAuth: function () {
