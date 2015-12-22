@@ -3,13 +3,18 @@ var Backbone = Backbone || {};
 
 app.Router = Backbone.Router.extend({
   initialize: function () {
-    this.authByToken = new app.authByToken();
     this.home = new app.home();
+    this.authByToken = new app.authByToken();
   },
   routes: {
-    '': 'home'
+    '': 'home',
+    'authByToken': 'authByToken'
+
   },
   home: function () {
-    this.newsView.render();
+    this.home.render();
+  },
+  authByToken: function () {
+    this.authByToken.render();
   }
 });

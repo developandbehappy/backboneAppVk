@@ -3,13 +3,29 @@
 <head>
     <link rel="stylesheet" type="text/css" href="src/style/style.css"/>
     <meta charset="UTF-8">
-    <title>HackerNews</title>
+    <title>vkApi</title>
     <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
 <div class="container" id="hnContainer">
     <div class="header">
-        <h1 class="text-center">News-Hacker</h1>
+        <br>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-9" aria-expanded="false"><span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">vkApi</a></div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/#/">Home</a></li>
+                        <li><a href="/#/authByToken">Auth</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </div>
     <div class="content">
 
@@ -17,9 +33,6 @@
 </div>
 <br>
 
-<div id="loadingWrapper">
-    <div class="loader">Loading...</div>
-</div>
 <script src="/vendor/jquery/jquery.js"></script>
 <script src="/vendor/bootstrap/dist/js/bootstrap.js"></script>
 <script src="/vendor/underscore/underscore.js"></script>

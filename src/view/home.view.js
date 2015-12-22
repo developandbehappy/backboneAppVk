@@ -6,6 +6,7 @@ app.home = Backbone.View.extend({
 
   },
   render: function () {
-
+    var html = app.tpl.homeTpl({});
+    $('.content').html(html);
   }
 });

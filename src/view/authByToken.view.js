@@ -6,6 +6,7 @@ app.authByToken = Backbone.View.extend({
 
   },
   render: function () {
-
+    var html = app.tpl.authByTokenTpl({});
+    $('.content').html(html);
   }
 });
