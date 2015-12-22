@@ -23,6 +23,7 @@ app.authByToken = Backbone.View.extend({
         console.warn('Error: ', response.error.error_msg);
       } else {
         app.router.navigate("/", true);
+
       }
     });
   }

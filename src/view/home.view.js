@@ -7,7 +7,7 @@ app.home = Backbone.View.extend({
 
   },
   render: function () {
-    var html = app.tpl.homeTpl({});
+    var html = app.tpl.homeTpl({avatarUrl: '', firstName: 'Вася', lastName: 'Пупкин'});
     $('.content').html(html);
   }
 });

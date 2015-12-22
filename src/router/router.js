@@ -12,9 +12,20 @@ app.Router = Backbone.Router.extend({
 
   },
   home: function () {
-    this.home.render();
+    if (this.isAuth()) {
+      this.home.render();
+    }
   },
   authByToken: function () {
+
     this.authByToken.render();
+  },
+  isAuth: function () {
+    if (app.token.isValid()) {
+      return true;
+    } else {
+      this.navigate('/authByToken', true);
+      return false;
+    }
   }
 });

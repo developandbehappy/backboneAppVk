@@ -20,9 +20,7 @@
                     <a class="navbar-brand" href="#">vkApi</a></div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
                     <ul class="nav navbar-nav">
-                        <li><a href="/#/">Home</a></li>
                         <li><a href="/#/authByToken">Auth</a></li>
-
                     </ul>
                 </div>
             </div>
@@ -40,13 +38,58 @@
 <script src="/vendor/backbone/backbone.js"></script>
 <script src="/vendor/handlebars/handlebars.runtime.js"></script>
 <script src="/vendor/handlebars/handlebars.js"></script>
-<script src="src/modules/template.js"></script>
-<script src="src/view/home.view.js"></script>
-<script src="src/view/authByToken.view.js"></script>
-<script src="src/router/router.js"></script>
-<script src="src/app.js"></script>
+<script src="/vendor/store2/dist/store2.js"></script>
+<script src="/src/modules/template.js"></script>
+<script src="/src/modules/token.js"></script>
+<script src="/src/view/home.view.js"></script>
+<script src="/src/view/authByToken.view.js"></script>
+<script src="/src/router/router.js"></script>
+<script src="/src/app.js"></script>
 <script id="homeTpl" type="text/x-handlebars-template">
-    <h1>home</h1>
+    <div class="row">
+        <div>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{firstName}} {{lastName}}</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3 " align="center">
+                            <img alt="User Pic" src="{{avatarUrl}}" class="img-circle img-responsive">
+                        </div>
+                        <div class=" col-md-9 col-lg-9 ">
+                            <table class="table table-user-information">
+                                <tbody>
+                                <tr>
+                                    <td>Department:</td>
+                                    <td>Programming</td>
+                                </tr>
+                                <tr>
+                                    <td>Hire date:</td>
+                                    <td>06/23/2013</td>
+                                </tr>
+                                <tr>
+                                    <td>Date of Birth</td>
+                                    <td>01/24/1988</td>
+                                </tr>
+
+                                <tr>
+                                <tr>
+                                    <td>Gender</td>
+                                    <td>Male</td>
+                                </tr>
+                                <tr>
+                                    <td>Home Address</td>
+                                    <td>Metro Manila,Philippines</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </script>
 <script id="authByTokenTpl" type="text/x-handlebars-template">
     <div class="input-group">
