@@ -15,7 +15,9 @@
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                             data-target="#bs-example-navbar-collapse-9" aria-expanded="false"><span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="#">vkApi</a></div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
@@ -41,66 +43,64 @@
 <script src="/vendor/store2/dist/store2.js"></script>
 <script src="/src/modules/template.js"></script>
 <script src="/src/modules/token.js"></script>
+<script src="/src/modules/vk.api.js"></script>
 <script src="/src/view/home.view.js"></script>
 <script src="/src/view/authByToken.view.js"></script>
 <script src="/src/router/router.js"></script>
 <script src="/src/app.js"></script>
 <script id="homeTpl" type="text/x-handlebars-template">
-    <div class="row">
-        <div>
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title">{{firstName}} {{lastName}}</h3>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{firstName}} {{lastName}}</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center">
+                    <img alt="User Pic" src="{{avatarUrl}}" class="img-circle img-responsive">
                 </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-3 col-lg-3 " align="center">
-                            <img alt="User Pic" src="{{avatarUrl}}" class="img-circle img-responsive">
-                        </div>
-                        <div class=" col-md-9 col-lg-9 ">
-                            <table class="table table-user-information">
-                                <tbody>
-                                <tr>
-                                    <td>Онлайн:</td>
-                                    <td>{{online}}</td>
-                                </tr><tr>
-                                    <td>Статус:</td>
-                                    <td>{{status}}</td>
-                                </tr>
-                                <tr>
-                                    <td>id-пользователя:</td>
-                                    <td>{{uid}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Дата рождения:</td>
-                                    <td>{{bdate}}</td>
-                                </tr>
+                <div class=" col-md-9 col-lg-9 ">
+                    <table class="table table-user-information">
+                        <tbody>
+                        <tr>
+                            <td>Онлайн:</td>
+                            <td>{{online}}</td>
+                        </tr>
+                        <tr>
+                            <td>Статус:</td>
+                            <td>{{status}}</td>
+                        </tr>
+                        <tr>
+                            <td>id-пользователя:</td>
+                            <td>{{uid}}</td>
+                        </tr>
+                        <tr>
+                            <td>Дата рождения:</td>
+                            <td>{{bdate}}</td>
+                        </tr>
 
-                                <tr>
-                                <tr>
-                                    <td>Пол:</td>
-                                    <td>{{sex}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Страна:</td>
-                                    <td>{{country}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Город:</td>
-                                    <td>{{city}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Номер телефона:</td>
-                                    <td>{{has_mobile}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Дата посещения:</td>
-                                    <td>{{last_seen}}</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                        <tr>
+                        <tr>
+                            <td>Пол:</td>
+                            <td>{{sex}}</td>
+                        </tr>
+                        <tr>
+                            <td>Страна:</td>
+                            <td>{{country}}</td>
+                        </tr>
+                        <tr>
+                            <td>Город:</td>
+                            <td>{{city}}</td>
+                        </tr>
+                        <tr>
+                            <td>Номер телефона:</td>
+                            <td>{{has_mobile}}</td>
+                        </tr>
+                        <tr>
+                            <td>Дата посещения:</td>
+                            <td>{{last_seen}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
