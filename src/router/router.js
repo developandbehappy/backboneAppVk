@@ -8,7 +8,8 @@ app.Router = Backbone.Router.extend({
   },
   routes: {
     '': 'home',
-    'authByToken': 'authByToken'
+    'authByToken': 'authByToken',
+    'friends': 'friends'
 
   },
   home: function () {
@@ -19,6 +20,7 @@ app.Router = Backbone.Router.extend({
   authByToken: function () {
     this.authByToken.render();
   },
+
   isAuth: function () {
     if (app.token.isValid()) {
       return true;
