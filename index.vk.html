@@ -9,73 +9,97 @@
 <body>
 <div class="container col-lg-12">
     <div class="row">
-        <div class="header">
-            <ul class="nav nav-pills col-lg-11" id="headerNav">
-                <li><a href="#"><img src="img/logoVk.png" alt=""></a></li>
-                <li><a href="#">Новости</a></li>
-                <li><a href="#">Друзья</a></li>
-                <li><a href="#">Фотографии</a></li>
-                <li><a href="#">Видеозаписи</a></li>
-                <li><a href="#">Группы</a></li>
-                <li><a href="#">Закладки</a></li>
-            </ul>
-            <ul class="nav nav-pills col-lg-1" id="headerNavRight">
-                <li></li>
-                <li><a href="#"><img
-                                src="http://megaicons.net/static/img/icons_sizes/8/178/32/users-administrator-icon.png"
-                                alt=""></a></li>
+        <div class="header"></div>
+        <div class="content"></div>
+    </div>
+</div>
+<script src="/vendor/jquery/jquery.js"></script>
+<script src="/vendor/bootstrap/dist/js/bootstrap.js"></script>
+<script src="/vendor/underscore/underscore.js"></script>
+<script src="/vendor/backbone/backbone.js"></script>
+<script src="/vendor/handlebars/handlebars.runtime.js"></script>
+<script src="/vendor/handlebars/handlebars.js"></script>
+<script src="/vendor/store2/dist/store2.js"></script>
+<script src="/src/modules/template.js"></script>
+<script src="/src/modules/token.js"></script>
+<script src="/src/modules/data.user.js"></script>
+<script src="/src/modules/vk.api.js"></script>
+<script src="/src/view/vkHeader.js"></script>
+<script src="/src/view/vkContent.js"></script>
+<script src="/src/view/authByToken.view.js"></script>
+<script src="/src/router/router.js"></script>
+<script src="/src/app.js"></script>
+<!--tpl-->
+<script id="header" type="text/x-handlebars-template">
+    <ul class="nav nav-pills col-lg-11" id="headerNav">
+        <li><a href="#"><img src="img/logoVk.png" alt=""></a></li>
+        <li><a href="#">Новости</a></li>
+        <li><a href="#">Друзья</a></li>
+        <li><a href="#">Фотографии</a></li>
+        <li><a href="#">Видеозаписи</a></li>
+        <li><a href="#">Группы</a></li>
+        <li><a href="#">Закладки</a></li>
+    </ul>
+    <ul class="nav nav-pills col-lg-1" id="headerNavRight">
+        <li></li>
+        <li><a href="#"><img src="http://megaicons.net/static/img/icons_sizes/8/178/32/users-administrator-icon.png"
+                             alt=""></a></li>
+    </ul>
+</script>
+<script id="homeContent" type="text/x-handlebars-template">
+    <div id="contentUser">
+        <div id="photoUser">
+            <img src="{{avatarUrl}}"
+                 alt="">
+        </div>
+        <div id="nameStatusUser">
+            <h3>{{firstName}} {{lastName}}</h3>
+
+            <p class="status">{{status}}</p>
+            <div class="input-group">
+                <input type="text" class="form-control" value="{{status}}">
+                <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="button">Сохранить</button>
+                </span>
+            </div>
+        </div>
+        <div id="navUser">
+            <ul class="nav nav-pills text-center">
+                <li><a href=""><h2>5245</h2>
+                    </a>
+                    <small>Подписчиков</small>
+                </li>
+                <li><a href=""><h2>5245</h2>
+                    </a>
+                    <small>Друзей</small>
+                </li>
+                <li><a href=""><h2>5245</h2>
+                    </a>
+                    <small>Фотографий</small>
+                </li>
+                <li><a href=""><h2>5245</h2>
+                    </a>
+                    <small>Видео</small>
+                </li>
             </ul>
         </div>
-        <div class="content">
-            <div id="contentUser">
-                <div id="photoUser">
-                    <img src="http://s5o.sports.ru/storage/simple/ru/edt/01/07/67/57/rued7977e5e41.56.110x110.jpeg"
-                         alt="">
-                </div>
-                <div id="nameStatusUser">
-                    <h3>Валерия Спиридонова</h3>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At atque eaque ex maiores nostrum
-                        voluptates? Dicta illum nihil quis veritatis?
-                    </p>
-                </div>
-                <div id="navUser">
-                    <ul class="nav nav-pills text-center">
-                        <li><a href=""><h2>5245</h2>
-                            </a>
-                            <small>Подписчиков</small>
-                        </li>
-                        <li><a href=""><h2>5245</h2>
-                            </a>
-                            <small>Друзей</small>
-                        </li>
-                        <li><a href=""><h2>5245</h2>
-                            </a>
-                            <small>Фотографий</small>
-                        </li>
-                        <li><a href=""><h2>5245</h2>
-                            </a>
-                            <small>Видео</small>
-                        </li>
-                    </ul>
-                </div>
-                <div id="addFriendsWriteMess">
-                    <a href="#" type="button" class="btn btn-block">Добавить в друзья</a>
-                    <a href="#" type="button" class="btn btn-block">Написать сообщение</a>
-                </div>
-            </div>
-            <div id="navUserInfo" class="text-center">
-                <ul class="nav nav-pills" id="headerNav">
-                    <li><a href="#">Публикации</a></li>
-                    <li><a href="#">Фотографии</a></li>
-                    <li><a href="#">Видеозаписи</a></li>
-                    <li><a href="#">Сообщества</a></li>
-                </ul>
-            </div>
+        <div id="addFriendsWriteMess">
+            <a href="#" type="button" class="btn btn-block">Добавить в друзья</a>
+            <a href="#" type="button" class="btn btn-block">Написать сообщение</a>
         </div>
     </div>
+    <div class="clearfix"></div>
+    <div id="navUserInfo" class="text-center">
+        <ul class="nav nav-pills" id="headerNav">
+            <li><a href="#">Публикации</a></li>
+            <li><a href="#">Фотографии</a></li>
+            <li><a href="#">Видеозаписи</a></li>
+            <li><a href="#">Сообщества</a></li>
+        </ul>
+    </div>
+    <div class="conteinerData">
 
-</div>
-<script src="/vendor/bootstrap/dist/js/bootstrap.js"></script>
+    </div>
+</script>
 </body>
 </html>

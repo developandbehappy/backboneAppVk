@@ -5,6 +5,7 @@ app.Router = Backbone.Router.extend({
   initialize: function () {
     this.home = new app.home();
     this.authByToken = new app.authByToken();
+    this.header = new app.header();
   },
   routes: {
     '': 'home',
@@ -14,6 +15,7 @@ app.Router = Backbone.Router.extend({
   },
   home: function () {
     if (this.isAuth()) {
+      this.header.render();
       this.home.render();
     }
   },

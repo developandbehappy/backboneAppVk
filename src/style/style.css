@@ -1,3 +1,7 @@
+* {
+    transition: all .1s;
+}
+
 body {
     background: #f2f5f7;
 }
@@ -7,6 +11,10 @@ body {
     height: 50px;
     border-bottom: 1px solid #315a88;
     line-height: 2em;
+}
+
+.nav>li>a:focus, .nav>li>a:hover {
+    background: none;
 }
 
 .header a {
@@ -48,21 +56,23 @@ body {
 
 #photoUser img {
     border-radius: 50px;
+    width: 110px;
+    height: 110px;
 }
 
 #contentUser #nameStatusUser {
-    width: 320px;
+    width: 300px;
     font-size: .9em;
     float: left;
 }
 
 #contentUser #navUser {
-    width: 600px;
+    width: 640px;
     padding: 10px 50px;
 }
 
 #navUser ul li {
-    margin: 0 14px;
+    margin: 0 19px;
 }
 
 #navUser small {
@@ -72,8 +82,8 @@ body {
 
 #contentUser #addFriendsWriteMess {
     float: right;
-    width: 230px;
-    padding: 30px 25px;
+    width: 200px;
+    padding: 30px 0;
 }
 
 #addFriendsWriteMess a {
@@ -83,7 +93,6 @@ body {
     border: 1px solid #548bc9;
     color: #548bc9;
     height: 36px;
-    transition: all .3s;
 }
 
 #addFriendsWriteMess a:nth-child(1) {

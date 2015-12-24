@@ -22,5 +22,13 @@ app.vk = {
     } else {
       return this.apiLink + method + '?access_token=' + tokenResult;
     }
+  },
+  userGet: function (params, token) {
+    var url = this.buildLink('users.get', params, token);
+    return $.get(url);
+  },
+  friendsGet: function (params, token) {
+    var url = this.buildLink('friends.get', params, token);
+    return $.get(url);
   }
 };

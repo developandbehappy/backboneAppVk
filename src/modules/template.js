@@ -8,6 +8,12 @@ app.tpl = {
   authByTokenTpl: function (context) {
     return this.getTpl(context, '#authByTokenTpl');
   },
+  header: function (context) {
+    return this.getTpl(context, '#header');
+  },
+  homeContent: function (context) {
+    return this.getTpl(context, '#homeContent')
+  },
   getTpl: function (context, selector) {
     var source = $(selector).html();
     var template = Handlebars.compile(source);
