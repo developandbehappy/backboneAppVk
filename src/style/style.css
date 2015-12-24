@@ -22,9 +22,13 @@ body {
     background: none;
 }
 
+.content {
+    margin: 28px;
+}
+
 .content #contentUser {
     height: 150px;
-    margin: 28px;
+    margin-bottom: 0;
     background: #fff;
     /*line-height: 2em;*/
     border: 1px solid #e5ebf0;
@@ -89,4 +93,28 @@ body {
 #addFriendsWriteMess a:hover {
     background: #548bc9;
     color: #fff;
+}
+
+.content #navUserInfo {
+    background: #f5f8fa;
+    border: 1px solid #dbe0e5;
+    border-radius: 0 0 5px 5px;
+    border-top: none;
+    height: 45px;
+}
+
+#navUserInfo ul {
+    margin: 0 auto;
+    display: inline-block;
+}
+
+#navUserInfo a {
+    color: #839098;
+    font-size: 16px;
+}
+
+#navUserInfo a:hover {
+    color: #363b3f;
+    border-bottom:2px solid #548bc9;
+    border-radius: 0;
 }
