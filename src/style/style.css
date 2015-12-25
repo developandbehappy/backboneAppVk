@@ -66,6 +66,22 @@ body {
     float: left;
 }
 
+#nameStatusUser #statusGroup {
+    position: relative;
+    bottom: 36px;
+    right: 13px;
+}
+
+#statusGroup input {
+    width: 200px;
+    font-size: 1em;
+}
+
+#statusGroup button {
+    background: #315a88;
+    color: #d8e5f3;
+}
+
 #contentUser #navUser {
     width: 640px;
     padding: 10px 50px;

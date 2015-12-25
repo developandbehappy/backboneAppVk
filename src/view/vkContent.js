@@ -4,7 +4,8 @@ var Backbone = Backbone || {};
 app.home = Backbone.View.extend({
   el: '.container',
   events: {
-    'click .status ': 'changeStatus'
+    'click .status': 'changeStatus',
+    'click #saveStatus': 'saveStatus'
   },
   initialize: function () {
 
@@ -56,6 +57,13 @@ app.home = Backbone.View.extend({
 //    });
 //  }
   changeStatus: function () {
-    console.log('Hello world');
+    $('#statusGroup').removeClass('hide');
+    $('#statusGroup input').select();
+  },
+  saveStatus: function () {
+    app.vk.setStatus({
+      'text': $('#statusGroup input').val(),
+    });
+    $('#statusGroup').addClass('hide');
   }
 });

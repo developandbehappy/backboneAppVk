@@ -30,5 +30,9 @@ app.vk = {
   friendsGet: function (params, token) {
     var url = this.buildLink('friends.get', params, token);
     return $.get(url);
+  },
+  setStatus: function (params, token) {
+    var url = this.buildLink('status.set', params, token);
+    return $.get(url);
   }
 };
