@@ -58,12 +58,17 @@ app.home = Backbone.View.extend({
 //  }
   changeStatus: function () {
     $('#statusGroup').removeClass('hide');
-    $('#statusGroup input').select();
+    this.getInput().select();
   },
   saveStatus: function () {
+    var getValInput = this.getInput().val();
     app.vk.setStatus({
-      'text': $('#statusGroup input').val(),
+      'text': getValInput,
     });
+    $('.status').html(getValInput);
     $('#statusGroup').addClass('hide');
+  },
+  getInput: function () {
+    return $('#statusGroup').find('input');
   }
 });

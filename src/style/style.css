@@ -32,6 +32,7 @@ body {
 
 .content {
     margin: 28px;
+    position: absolute;
 }
 
 .content #contentUser {
@@ -67,9 +68,9 @@ body {
 }
 
 #nameStatusUser #statusGroup {
-    position: relative;
-    bottom: 36px;
-    right: 13px;
+    position: absolute;
+    left: 138px;
+    top: 48px;
 }
 
 #statusGroup input {
