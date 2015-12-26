@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vkApi</title>
+    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container" id="hnContainer">
+    <div class="header">
+        <br>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-9" aria-expanded="false"><span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">vkApi</a></div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/#/authByToken">Auth</a></li>
+                        <li><a href="/#/friends">Friends</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="content">
+
+    </div>
+</div>
+<br>
+
+<script src="/vendor/jquery/jquery.js"></script>
+<script src="/vendor/bootstrap/dist/js/bootstrap.js"></script>
+<script src="/vendor/underscore/underscore.js"></script>
+<script src="/vendor/backbone/backbone.js"></script>
+<script src="/vendor/handlebars/handlebars.runtime.js"></script>
+<script src="/vendor/handlebars/handlebars.js"></script>
+<script src="/vendor/store2/dist/store2.js"></script>
+<script src="/src/modules/template.js"></script>
+<script src="/src/modules/token.js"></script>
+<script src="/src/modules/data.user.js"></script>
+<script src="/src/modules/vk.api.js"></script>
+<script src="/src/view/home.view.js"></script>
+<script src="/src/view/authByToken.view.js"></script>
+<script src="/src/router/router.js"></script>
+<script src="/src/app.js"></script>
+<script id="homeTpl" type="text/x-handlebars-template">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{firstName}} {{lastName}}</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center">
+                    <img alt="User Pic" src="{{avatarUrl}}" class="img-circle img-responsive">
+                </div>
+                <div class=" col-md-9 col-lg-9 ">
+                    <table class="table table-user-information">
+                        <tbody>
+                        <tr>
+                            <td>Онлайн:</td>
+                            <td>{{online}}</td>
+                        </tr>
+                        <tr>
+                            <td>Статус:</td>
+                            <td>{{status}}</td>
+                        </tr>
+                        <tr>
+                            <td>id-пользователя:</td>
+                            <td>{{uid}}</td>
+                        </tr>
+                        <tr>
+                            <td>Дата рождения:</td>
+                            <td>{{bdate}}</td>
+                        </tr>
+
+                        <tr>
+                        <tr>
+                            <td>Пол:</td>
+                            <td>{{sex}}</td>
+                        </tr>
+                        <tr>
+                            <td>Страна:</td>
+                            <td>{{country}}</td>
+                        </tr>
+                        <tr>
+                            <td>Город:</td>
+                            <td>{{city}}</td>
+                        </tr>
+                        <tr>
+                            <td>Номер телефона:</td>
+                            <td>{{has_mobile}}</td>
+                        </tr>
+                        <tr>
+                            <td>Дата посещения:</td>
+                            <td>{{last_seen}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<script id="authByTokenTpl" type="text/x-handlebars-template">
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="Gimme token" id="tokenInput">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" id="tokenButton">Go!</button>
+      </span>
+    </div>
+</script>
+</body>
+</html>

@@ -2,38 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>vkApi</title>
+    <title>Вконтакте</title>
     <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="src/style/style.css">
 </head>
 <body>
-<div class="container" id="hnContainer">
-    <div class="header">
-        <br>
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                            data-target="#bs-example-navbar-collapse-9" aria-expanded="false"><span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">vkApi</a></div>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
-                    <ul class="nav navbar-nav">
-                        <li><a href="/#/authByToken">Auth</a></li>
-                        <li><a href="/#/friends">Friends</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </div>
-    <div class="content">
-
+<div class="container col-lg-12">
+    <div class="row">
+        <div class="header"></div>
+        <div class="content"></div>
     </div>
 </div>
-<br>
-
 <script src="/vendor/jquery/jquery.js"></script>
 <script src="/vendor/bootstrap/dist/js/bootstrap.js"></script>
 <script src="/vendor/underscore/underscore.js"></script>
@@ -45,74 +24,93 @@
 <script src="/src/modules/token.js"></script>
 <script src="/src/modules/data.user.js"></script>
 <script src="/src/modules/vk.api.js"></script>
-<script src="/src/view/home.view.js"></script>
+<script src="/src/view/vkContentPhoto.js"></script>
+<script src="/src/view/vkHeader.js"></script>
+<script src="/src/view/vkContent.js"></script>
 <script src="/src/view/authByToken.view.js"></script>
 <script src="/src/router/router.js"></script>
 <script src="/src/app.js"></script>
-<script id="homeTpl" type="text/x-handlebars-template">
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <h3 class="panel-title">{{firstName}} {{lastName}}</h3>
+<!--tpl-->
+<script id="header" type="text/x-handlebars-template">
+    <ul class="nav nav-pills col-lg-11" id="headerNav">
+        <li><a href="#"><img src="img/logoVk.png" alt=""></a></li>
+        <li><a href="#">Новости</a></li>
+        <li><a href="#">Друзья</a></li>
+        <li><a href="#">Фотографии</a></li>
+        <li><a href="#">Видеозаписи</a></li>
+        <li><a href="#">Группы</a></li>
+        <li><a href="#">Закладки</a></li>
+    </ul>
+    <ul class="nav nav-pills col-lg-1" id="headerNavRight">
+        <li></li>
+        <li><a href="#"><img src="http://megaicons.net/static/img/icons_sizes/8/178/32/users-administrator-icon.png"
+                             alt=""></a></li>
+    </ul>
+</script>
+<script id="homeContent" type="text/x-handlebars-template">
+    <div id="contentUser">
+        <div id="photoUser">
+            <img src="{{avatarUrl}}"
+                 alt="">
         </div>
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-md-3 col-lg-3 " align="center">
-                    <img alt="User Pic" src="{{avatarUrl}}" class="img-circle img-responsive">
-                </div>
-                <div class=" col-md-9 col-lg-9 ">
-                    <table class="table table-user-information">
-                        <tbody>
-                        <tr>
-                            <td>Онлайн:</td>
-                            <td>{{online}}</td>
-                        </tr>
-                        <tr>
-                            <td>Статус:</td>
-                            <td>{{status}}</td>
-                        </tr>
-                        <tr>
-                            <td>id-пользователя:</td>
-                            <td>{{uid}}</td>
-                        </tr>
-                        <tr>
-                            <td>Дата рождения:</td>
-                            <td>{{bdate}}</td>
-                        </tr>
+        <div id="nameStatusUser">
+            <h3>{{firstName}} {{lastName}}</h3>
 
-                        <tr>
-                        <tr>
-                            <td>Пол:</td>
-                            <td>{{sex}}</td>
-                        </tr>
-                        <tr>
-                            <td>Страна:</td>
-                            <td>{{country}}</td>
-                        </tr>
-                        <tr>
-                            <td>Город:</td>
-                            <td>{{city}}</td>
-                        </tr>
-                        <tr>
-                            <td>Номер телефона:</td>
-                            <td>{{has_mobile}}</td>
-                        </tr>
-                        <tr>
-                            <td>Дата посещения:</td>
-                            <td>{{last_seen}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <p class="status">{{status}}</p>
+            <div class="input-group hide" id="statusGroup">
+                <input type="text" class="form-control" value="{{status}}">
+                <span class="input-group-btn">
+                    <button class="btn btn-secondary" id="saveStatus" type="button">Сохранить</button>
+                </span>
             </div>
         </div>
+        <div id="navUser">
+            <ul class="nav nav-pills text-center">
+                <li><a href=""><h2>{{counters.followers}}</h2>
+                    </a>
+                    <small>Подписчиков</small>
+                </li>
+                <li><a href=""><h2>{{counters.friends}}</h2>
+                    </a>
+                    <small>Друзей</small>
+                </li>
+                <li><a href=""><h2>{{counters.photos}}</h2>
+                    </a>
+                    <small>Фотографий</small>
+                </li>
+                <li><a href=""><h2>{{counters.videos}}</h2>
+                    </a>
+                    <small>Видео</small>
+                </li>
+            </ul>
+        </div>
+        <div id="addFriendsWriteMess">
+            <a href="#" type="button" class="btn btn-block">Добавить в друзья</a>
+            <a href="#" type="button" class="btn btn-block">Написать сообщение</a>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="navUserInfo" class="text-center">
+        <ul class="nav nav-pills" id="headerNav">
+            <li><a href="#">О себе</a></li>
+            <li><a href="#">Публикации</a></li>
+            <li><a href="#">Фотографии</a></li>
+            <li><a href="#">Видеозаписи</a></li>
+            <li><a href="#">Сообщества</a></li>
+        </ul>
+    </div>
+    <div class="profileContainerData">
+
     </div>
 </script>
-<script id="authByTokenTpl" type="text/x-handlebars-template">
-    <div class="input-group">
-        <input type="text" class="form-control" placeholder="Gimme token" id="tokenInput">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button" id="tokenButton">Go!</button>
-      </span>
+<script id="photoContent" type="text/x-handlebars-template">
+    <img src="{{srcImg}}" alt="" class="img-thumbnail">
+</script>
+<script id="albumsPhoto" type="text/x-handlebars-template">
+    <div class="thumb" id="{{idAlbum}}">
+        <a class="thumbnail" href="#">
+            <img class="img-responsive" src="{{firstPhotoFromAlbum}}" alt="">
+        </a>
     </div>
 </script>
 </body>

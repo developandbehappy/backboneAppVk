@@ -4,7 +4,7 @@ var Backbone = Backbone || {};
 app.photo = Backbone.View.extend({
   el: '.container',
   events: {
-    'click .thumb': 'drawPhotos'
+    'click .thumb': 'drawPhotosClicked'
   },
   initialize: function () {
 
@@ -23,30 +23,6 @@ app.photo = Backbone.View.extend({
       $('.profileContainerData').html(html);
     });
   },
-//  getPhotosAlbum: function () {
-//    var dataPhotos = this.getAlbumsPhotoId();
-//    return dataPhotos.then(function (response) {
-//      var arrayOfPromise = response.map(function (item) {
-//        return app.vk.getPhotosAlbum({
-//          album_id: item
-//        });
-//      });
-//      return $.when.apply($, arrayOfPromise);
-//    }).then(function () {
-//      return [].slice.call(arguments);
-//    }).then(function (responseArray) {
-//      return responseArray.map(function (item) {
-//        return item[0].response;
-//      });
-//    });
-//    var url = app.vk.getPhotosAlbum({
-//      album_id: '225763843'
-//    });
-//    return url.then(function (response) {
-//      return response.response;
-//    });
-//  }
-//  ,
   getAlbumsPhotoId: function () {
     var dataArray = [];
     var url = app.vk.getAlbumsPhoto({
@@ -59,11 +35,11 @@ app.photo = Backbone.View.extend({
       return dataArray;
     });
   },
-  drawPhotos: function (e) {
+  drawPhotosClicked: function (e) {
+    var idAlbum = this.getId(e);
     var html = '';
-    var idAlbumPhoto = e.currentTarget.id;
     var url = app.vk.getPhotosAlbum({
-      album_id: idAlbumPhoto
+      album_id: idAlbum
     });
     return url.then(function (response) {
       response.response.map(function (item) {
@@ -73,5 +49,12 @@ app.photo = Backbone.View.extend({
       });
       $('.profileContainerData').html(html);
     });
+  },
+  getId: function (e) {
+    if (typeof e === 'string') {
+      return e;
+    } else {
+      return e.currentTarget.id;
+    }
   }
 });

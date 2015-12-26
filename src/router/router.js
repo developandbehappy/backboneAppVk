@@ -6,12 +6,13 @@ app.Router = Backbone.Router.extend({
     this.home = new app.home();
     this.authByToken = new app.authByToken();
     this.header = new app.header();
+    this.photoAlbum = new app.photo();
   },
   routes: {
     '': 'home',
     'authByToken': 'authByToken',
-    'friends': 'friends'
-
+    'friends': 'friends',
+    'album/:id': 'album'
   },
   home: function () {
     if (this.isAuth()) {
@@ -22,7 +23,13 @@ app.Router = Backbone.Router.extend({
   authByToken: function () {
     this.authByToken.render();
   },
-
+  album: function (album) {
+    if (this.isAuth()) {
+      this.header.render();
+      this.home.render();
+      this.photoAlbum.drawPhotosClicked(album);
+    }
+  },
   isAuth: function () {
     if (app.token.isValid()) {
       return true;
