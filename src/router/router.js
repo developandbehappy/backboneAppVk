@@ -13,6 +13,7 @@ app.Router = Backbone.Router.extend({
     '': 'profileHandler',
     'post': 'profilePostHandler',
     'album': 'profileAlbumHandler',
+    'album/:id': 'profileAlbumHandler',
     'authByToken': 'authByTokenHandler'
   },
   profileHandler: function () {
@@ -27,10 +28,12 @@ app.Router = Backbone.Router.extend({
       this.profileIndexView.navigate('post');
     }
   },
-  profileAlbumHandler: function () {
+  profileAlbumHandler: function (id) {
     if (this.isAuth()) {
       this.baseHeaderView.render();
-      this.profileIndexView.navigate('album');
+      this.profileIndexView.navigate('album', {
+        id: id
+      });
     }
   },
   authByTokenHandler: function () {

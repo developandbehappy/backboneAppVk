@@ -54,11 +54,16 @@ app.profileIndexView = Backbone.View.extend({
         });
       }
       if (self.type === 'album') {
-        self.profileAlbumView.fetchData().then(function () {
-          self.profileAlbumView.render();
-        });
+        if (self.params.id) {
+          self.profileAlbumView.fetchAlbumData(self.params.id).then(function () {
+            self.profileAlbumView.renderAlbumPhotos();
+          });
+        } else {
+          self.profileAlbumView.fetchAlbumListData().then(function () {
+            self.profileAlbumView.renderAlbumList();
+          });
+        }
       }
-//      self.photoView.render();
     });
   },
   fetchUserData: function () {
