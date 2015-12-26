@@ -1,7 +1,7 @@
 var app = app || {};
 var Backbone = Backbone || {};
 
-app.authByToken = Backbone.View.extend({
+app.authByTokenView = Backbone.View.extend({
   el: '.content',
   events: {
     'click #tokenButton': 'getTokenHandler'

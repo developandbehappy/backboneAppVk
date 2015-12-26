@@ -1,7 +1,7 @@
 var app = app || {};
 var Backbone = Backbone || {};
 
-app.header = Backbone.View.extend({
+app.baseHeaderView = Backbone.View.extend({
   el: '.container',
   initialize: function () {
 

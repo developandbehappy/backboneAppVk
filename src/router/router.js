@@ -3,32 +3,24 @@ var Backbone = Backbone || {};
 
 app.Router = Backbone.Router.extend({
   initialize: function () {
-    this.home = new app.home();
-    this.authByToken = new app.authByToken();
-    this.header = new app.header();
-    this.photoAlbum = new app.photo();
+    this.authByTokenView = new app.authByTokenView();
+    this.profileIndexView = new app.profileIndexView();
+    this.baseHeaderView = new app.baseHeaderView();
+//    this.profileAboutView = new app.profileAboutView();
+//    this.profilePhotoView = new app.profilePhotoView();
   },
   routes: {
-    '': 'home',
-    'authByToken': 'authByToken',
-    'friends': 'friends',
-    'album/:id': 'album'
+    '': 'profileHandler',
+    'authByToken': 'authByTokenHandler'
   },
-  home: function () {
+  profileHandler: function () {
     if (this.isAuth()) {
-      this.header.render();
-      this.home.render();
+      this.headerView.render();
+      this.profileIndexView.render();
     }
   },
-  authByToken: function () {
-    this.authByToken.render();
-  },
-  album: function (album) {
-    if (this.isAuth()) {
-      this.header.render();
-      this.home.render();
-      this.photoAlbum.drawPhotosClicked(album);
-    }
+  authByTokenHandler: function () {
+    this.authByTokenView.render();
   },
   isAuth: function () {
     if (app.token.isValid()) {

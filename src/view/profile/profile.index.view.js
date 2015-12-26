@@ -1,7 +1,7 @@
 var app = app || {};
 var Backbone = Backbone || {};
 
-app.home = Backbone.View.extend({
+app.profileIndexView = Backbone.View.extend({
   el: '.container',
   initialize: function () {
 
