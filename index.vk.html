@@ -104,7 +104,14 @@
     </div>
 </script>
 <script id="photoContent" type="text/x-handlebars-template">
-    <img src="{{urlPhoto}}" alt="" class="img-thumbnail">
+    <img src="{{srcImg}}" alt="" class="img-thumbnail">
+</script>
+<script id="albumsPhoto" type="text/x-handlebars-template">
+    <div class="thumb" id="{{idAlbum}}">
+        <a class="thumbnail" href="#">
+            <img class="img-responsive" src="{{firstPhotoFromAlbum}}" alt="">
+        </a>
+    </div>
 </script>
 </body>
 </html>

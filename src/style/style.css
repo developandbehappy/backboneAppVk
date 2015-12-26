@@ -13,7 +13,7 @@ body {
     line-height: 2em;
 }
 
-.nav>li>a:focus, .nav>li>a:hover {
+.nav > li > a:focus, .nav > li > a:hover {
     background: none;
 }
 
@@ -74,6 +74,7 @@ body {
 #nameStatusUser .status:hover {
     text-decoration: underline;
 }
+
 #nameStatusUser #statusGroup {
     position: absolute;
     left: 138px;
@@ -149,13 +150,22 @@ body {
 
 #navUserInfo a:hover {
     color: #363b3f;
-    border-bottom:2px solid #548bc9;
+    border-bottom: 2px solid #548bc9;
     border-radius: 0;
 }
 
-.profileContainerData .photos {
-    border: 1px solid #00d6b2;
+.profileContainerData div {
     width: 212px;
     height: 212px;
     display: inline-block;
+}
+
+.thumbnail {
+    height: 100%;
+}
+
+.thumbnail img {
+    position: relative;
+    top: 25%;
+    zoom: 2em;
 }
