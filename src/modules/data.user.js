@@ -20,5 +20,11 @@ app.dataByUser = {
   },
   getDateLastVisit: function (lastVisit) {
     return new Date(lastVisit.time).getUTCDate();
+  },
+  getDataStatus: function (status) {
+    if (status === '') {
+      return 'Изменить статус';
+    }
+    return status;
   }
 };

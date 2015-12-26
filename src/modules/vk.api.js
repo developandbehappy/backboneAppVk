@@ -11,7 +11,6 @@ app.vk = {
     } else {
       tokenResult = app.token.getToken();
     }
-    console.log('params', params);
     if (params) {
       for (key in params) {
         if (params.hasOwnProperty(key)) {
@@ -27,12 +26,16 @@ app.vk = {
     var url = this.buildLink('users.get', params, token);
     return $.get(url);
   },
-  friendsGet: function (params, token) {
-    var url = this.buildLink('friends.get', params, token);
-    return $.get(url);
-  },
   setStatus: function (params, token) {
     var url = this.buildLink('status.set', params, token);
+    return $.get(url);
+  },
+  getAlbumsPhoto: function (params, token) {
+    var url = this.buildLink('photos.getAlbums', params, token);
+    return $.get(url);
+  },
+  getPhotosAlbum: function (params, token) {
+    var url = this.buildLink('photos.get', params, token);
     return $.get(url);
   }
 };

@@ -24,6 +24,7 @@
 <script src="/src/modules/token.js"></script>
 <script src="/src/modules/data.user.js"></script>
 <script src="/src/modules/vk.api.js"></script>
+<script src="/src/view/vkContentPhoto.js"></script>
 <script src="/src/view/vkHeader.js"></script>
 <script src="/src/view/vkContent.js"></script>
 <script src="/src/view/authByToken.view.js"></script>
@@ -65,19 +66,19 @@
         </div>
         <div id="navUser">
             <ul class="nav nav-pills text-center">
-                <li><a href=""><h2>5245</h2>
+                <li><a href=""><h2>{{counters.followers}}</h2>
                     </a>
                     <small>Подписчиков</small>
                 </li>
-                <li><a href=""><h2>5245</h2>
+                <li><a href=""><h2>{{counters.friends}}</h2>
                     </a>
                     <small>Друзей</small>
                 </li>
-                <li><a href=""><h2>5245</h2>
+                <li><a href=""><h2>{{counters.photos}}</h2>
                     </a>
                     <small>Фотографий</small>
                 </li>
-                <li><a href=""><h2>5245</h2>
+                <li><a href=""><h2>{{counters.videos}}</h2>
                     </a>
                     <small>Видео</small>
                 </li>
@@ -91,15 +92,19 @@
     <div class="clearfix"></div>
     <div id="navUserInfo" class="text-center">
         <ul class="nav nav-pills" id="headerNav">
+            <li><a href="#">О себе</a></li>
             <li><a href="#">Публикации</a></li>
             <li><a href="#">Фотографии</a></li>
             <li><a href="#">Видеозаписи</a></li>
             <li><a href="#">Сообщества</a></li>
         </ul>
     </div>
-    <div class="conteinerData">
+    <div class="profileContainerData">
 
     </div>
+</script>
+<script id="photoContent" type="text/x-handlebars-template">
+    <img src="{{urlPhoto}}" alt="" class="img-thumbnail">
 </script>
 </body>
 </html>

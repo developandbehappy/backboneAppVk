@@ -12,7 +12,10 @@ app.tpl = {
     return this.getTpl(context, '#header');
   },
   homeContent: function (context) {
-    return this.getTpl(context, '#homeContent')
+    return this.getTpl(context, '#homeContent');
+  },
+  photoContent: function (context) {
+    return this.getTpl(context, '#photoContent');
   },
   getTpl: function (context, selector) {
     var source = $(selector).html();
