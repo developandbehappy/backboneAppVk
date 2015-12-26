@@ -26,6 +26,7 @@ gulp.task('connect', function () {
       'index.html',
       'src/*.css',
       'src/*/*.js',
+      'src/*/*/*.js',
       'src/*.js'
     ],
     port: 3000,

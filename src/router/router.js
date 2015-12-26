@@ -15,7 +15,7 @@ app.Router = Backbone.Router.extend({
   },
   profileHandler: function () {
     if (this.isAuth()) {
-      this.headerView.render();
+      this.baseHeaderView.render();
       this.profileIndexView.render();
     }
   },
