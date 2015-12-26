@@ -1,5 +1,6 @@
 var app = app || {};
 var Backbone = Backbone || {};
+var DEFAULT_TYPE = 'about';
 
 app.profileIndexView = Backbone.View.extend({
   el: '.container',
@@ -8,7 +9,16 @@ app.profileIndexView = Backbone.View.extend({
     'click #saveStatus': 'saveStatus'
   },
   initialize: function () {
+    this.type = DEFAULT_TYPE;
+    this.params = {};
 //    this.photoView = new app.photo();
+  },
+  navigate: function (type, params) {
+    this.type = type || DEFAULT_TYPE;
+    this.params = params || {};
+    console.log('this.type', this.type);
+    console.log('this.params', this.params);
+    this.render();
   },
   render: function () {
     var self = this;
@@ -28,7 +38,6 @@ app.profileIndexView = Backbone.View.extend({
         firstName: response.first_name,
         lastName: response.last_name,
         followers_count: response.followers_count,
-//      counter
         counters: response.counters
       });
       $('.content').html(html);
@@ -50,7 +59,7 @@ app.profileIndexView = Backbone.View.extend({
   saveStatus: function () {
     var getValInput = this.getInput().val();
     app.vk.setStatus({
-      'text': getValInput,
+      'text': getValInput
     });
     $('.status').html(app.dataByUser.getDataStatus(getValInput));
     $('#statusGroup').addClass('hide');

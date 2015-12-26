@@ -11,12 +11,19 @@ app.Router = Backbone.Router.extend({
   },
   routes: {
     '': 'profileHandler',
+    'album': 'profileAlbumHandler',
     'authByToken': 'authByTokenHandler'
   },
   profileHandler: function () {
     if (this.isAuth()) {
       this.baseHeaderView.render();
-      this.profileIndexView.render();
+      this.profileIndexView.navigate('about');
+    }
+  },
+  profileAlbumHandler: function () {
+    if (this.isAuth()) {
+      this.baseHeaderView.render();
+      this.profileIndexView.navigate('album');
     }
   },
   authByTokenHandler: function () {
