@@ -13,7 +13,8 @@ app.profileAboutView = Backbone.View.extend({
   render: function () {
     var data = this.resultData;
     console.log("RENDER_ABOUT_COMPONENT");
-    $('.profileContainerData').html(JSON.stringify(data));
+    var stringResult = JSON.stringify(data);
+    $('.profileContainerData').html("<h3>" + stringResult +"</h3>");
   },
   fetchData: function () {
     var self = this;

@@ -2,9 +2,9 @@ var app = app || {};
 var Backbone = Backbone || {};
 
 /**
- * ProfilePost component
+ * ProfileAlbum component
  */
-app.profilePostView = Backbone.View.extend({
+app.profileAlbumView = Backbone.View.extend({
   el: '.container',
   resultData: false,
   initialize: function (params) {
@@ -12,7 +12,7 @@ app.profilePostView = Backbone.View.extend({
   },
   render: function () {
     var data = this.resultData;
-    console.log("RENDER_POST_COMPONENT");
+    console.log("RENDER_ABOUT_COMPONENT");
     var stringResult = JSON.stringify(data);
     $('.profileContainerData').html("<h3>" + stringResult +"</h3>");
   },
@@ -27,8 +27,9 @@ app.profilePostView = Backbone.View.extend({
     var dfd = jQuery.Deferred();
     setTimeout(function () {
       dfd.resolve({
-        post1: 'lorem_post',
-        post3: '31231'
+        about1: 'about123',
+        about2: 'dsada',
+        about3: '31231'
       });
     }, 300);
     return dfd.promise();

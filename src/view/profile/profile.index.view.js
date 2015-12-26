@@ -11,7 +11,8 @@ app.profileIndexView = Backbone.View.extend({
   initialize: function () {
     this.type = DEFAULT_TYPE;
     this.params = {};
-//    this.photoView = new app.photo();
+    this.profileAboutView = new app.profileAboutView();
+    this.profilePostView = new app.profilePostView();
   },
   navigate: function (type, params) {
     this.type = type || DEFAULT_TYPE;
@@ -41,6 +42,21 @@ app.profileIndexView = Backbone.View.extend({
         counters: response.counters
       });
       $('.content').html(html);
+      if (self.type === 'about') {
+        self.profileAboutView.fetchData().then(function () {
+          self.profileAboutView.render();
+        });
+      }
+      if (self.type === 'post') {
+        self.profilePostView.fetchData().then(function () {
+          self.profilePostView.render();
+        });
+      }
+      if (self.type === 'album') {
+        self.profileAboutView.fetchData().then(function () {
+          self.profileAboutView.render();
+        });
+      }
 //      self.photoView.render();
     });
   },
