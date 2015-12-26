@@ -11,27 +11,35 @@ app.profileAlbumView = Backbone.View.extend({
     this.params = params;
   },
   render: function () {
+    var html = '';
+    console.log("RENDER_ALBUM_COMPONENT");
     var data = this.resultData;
-    console.log("RENDER_ABOUT_COMPONENT");
-    var stringResult = JSON.stringify(data);
-    $('.profileContainerData').html("<h3>" + stringResult +"</h3>");
+    data.map(function (item) {
+      html += app.tpl.albumsPhoto({
+        titleAlbum: item.title,
+        firstPhotoFromAlbum: item.thumb_src,
+        idAlbum: item.aid
+      });
+    });
+    $('.profileContainerData').html(html);
   },
   fetchData: function () {
     var self = this;
-    return this.fetchAboutData().then(function (result) {
+    return this.fetchAlbumData().then(function (result) {
       self.resultData = result;
       return result;
     });
   },
-  fetchAboutData: function () {
-    var dfd = jQuery.Deferred();
-    setTimeout(function () {
-      dfd.resolve({
-        about1: 'about123',
-        about2: 'dsada',
-        about3: '31231'
+  fetchAlbumData: function () {
+    var dataArray = [];
+    var url = app.vk.getAlbumsPhoto({
+      need_covers: '1'
+    });
+    return url.then(function (response) {
+      response.response.map(function (item) {
+        dataArray.push(item)
       });
-    }, 300);
-    return dfd.promise();
+      return dataArray;
+    });
   }
 });

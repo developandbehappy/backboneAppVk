@@ -18,12 +18,12 @@ app.profilePostView = Backbone.View.extend({
   },
   fetchData: function () {
     var self = this;
-    return this.fetchAboutData().then(function (result) {
+    return this.fetchPostData().then(function (result) {
       self.resultData = result;
       return result;
     });
   },
-  fetchAboutData: function () {
+  fetchPostData: function () {
     var dfd = jQuery.Deferred();
     setTimeout(function () {
       dfd.resolve({
