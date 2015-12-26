@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Вконтакте</title>
     <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/magnific-popup/dist/magnific-popup.css">
     <link rel="stylesheet" href="src/style/style.css">
 </head>
 <body>
@@ -19,6 +20,7 @@
 <script src="/vendor/backbone/backbone.js"></script>
 <script src="/vendor/handlebars/handlebars.runtime.js"></script>
 <script src="/vendor/handlebars/handlebars.js"></script>
+<script src="/vendor/magnific-popup/dist/jquery.magnific-popup.js"></script>
 <script src="/vendor/store2/dist/store2.js"></script>
 
 <script src="/src/modules/template.js"></script>
@@ -93,8 +95,8 @@
             </ul>
         </div>
         <!--<div id="addFriendsWriteMess">-->
-            <!--<a href="#" type="button" class="btn btn-block">Добавить в друзья</a>-->
-            <!--<a href="#" type="button" class="btn btn-block">Написать сообщение</a>-->
+        <!--<a href="#" type="button" class="btn btn-block">Добавить в друзья</a>-->
+        <!--<a href="#" type="button" class="btn btn-block">Написать сообщение</a>-->
         <!--</div>-->
     </div>
     <div class="clearfix"></div>
@@ -114,10 +116,17 @@
 <script id="photoContent" type="text/x-handlebars-template">
     <img src="{{srcImg}}" alt="" class="img-thumbnail">
 </script>
-<script id="albumsPhoto" type="text/x-handlebars-template">
-    <div class="thumb" id="album{{idAlbum}}">
-        <a class="thumbnail" href="/#/album/{{idAlbum}}">
-            <img class="img-responsive" src="{{firstPhotoFromAlbum}}" alt="">
+<script id="albumItem" type="text/x-handlebars-template">
+    <div class="thumb albumItem" id="albumItem_{{id}}">
+        <a class="thumbnail" href="/#/album/{{id}}">
+            <img class="img-responsive" src="{{imageLink}}" alt="">
+        </a>
+    </div>
+</script>
+<script id="albumPhotoItem" type="text/x-handlebars-template">
+    <div data-big="{{srcBig}}" class="thumb albumPhotoItem" id="albumPhotoItem_{{id}}">
+        <a class="thumbnail">
+            <img class="img-responsive" src="{{imageLink}}" alt="">
         </a>
     </div>
 </script>

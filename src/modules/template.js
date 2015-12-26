@@ -14,8 +14,11 @@ app.tpl = {
   homeContent: function (context) {
     return this.getTpl(context, '#homeContent');
   },
-  albumsPhoto: function (context) {
-    return this.getTpl(context, '#albumsPhoto');
+  albumItem: function (context) {
+    return this.getTpl(context, '#albumItem');
+  },
+  albumPhotoItem: function (context) {
+    return this.getTpl(context, '#albumPhotoItem');
   },
   photoContent: function (context) {
     return this.getTpl(context, '#photoContent');

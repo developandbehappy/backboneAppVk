@@ -11,15 +11,19 @@ app.profileAlbumView = Backbone.View.extend({
   initialize: function (params) {
     this.params = params;
   },
+  events: {
+    'click .albumPhotoItem': 'openPhotoHandler'
+  },
   renderAlbumList: function () {
     var html = '';
     console.log("RENDER_ALBUM_COMPONENT");
     var data = this.resultData;
     data.map(function (item) {
-      html += app.tpl.albumsPhoto({
-        titleAlbum: item.title,
-        firstPhotoFromAlbum: item.thumb_src,
-        idAlbum: item.aid
+      html += app.tpl.albumItem({
+        type: 'album_list',
+        title: item.title,
+        imageLink: item.thumb_src,
+        id: item.aid
       });
     });
     $('.profileContainerData').html(html);
@@ -40,10 +44,12 @@ app.profileAlbumView = Backbone.View.extend({
     console.log("RENDER_ALBUM_PHOTOS_COMPONENT");
     var data = this.resultData;
     data.map(function (item) {
-      html += app.tpl.albumsPhoto({
-        titleAlbum: item.title,
-        firstPhotoFromAlbum: item.src,
-        idAlbum: item.aid
+      html += app.tpl.albumPhotoItem({
+        type: 'album_photo',
+        title: item.title,
+        srcBig: item.src_big,
+        imageLink: item.src,
+        id: item.aid
       });
     });
     $('.profileContainerData').html(html);
@@ -60,5 +66,16 @@ app.profileAlbumView = Backbone.View.extend({
       self.resultData = result;
       return result;
     });
+  },
+  openPhotoHandler: function (e) {
+    var $this = $(e.currentTarget);
+    var link = $this.data('big');
+    $.magnificPopup.open({
+      items: {
+        src: link
+      },
+      type: 'image'
+    }, 0);
+    console.log('openPhotoHandler');
   }
 });
