@@ -2,29 +2,29 @@ var app = app || {};
 var Backbone = Backbone || {};
 
 /**
- * ProfilePhoto component
+ * ProfileVideo component
  */
 app.profileVideosView = Backbone.View.extend({
   el: '.container',
   resultData: false,
+  events: {
+    'click .videoBlock': 'popupVideoBlock'
+  },
   initialize: function (params) {
     this.params = params;
   },
   render: function () {
     var data = this.resultData;
-    this.fetchVideoData().then(function (response) {
-      var myResponse = response.splice(1);
-      console.log('myResponse', myResponse);
-      console.log('myResponse', myResponse[0].title);
-
-      var html = app.tpl.videoContent({
-        title: myResponse.title,
-        firstVideoSrc: myResponse.files,
-        photoByVideo: myResponse.image
+    var html = '';
+    data.map(function (item) {
+      console.log('item', item);
+      html += app.tpl.videoContent({
+        title: item.title,
+        urlImgByVideo: item.image,
+        player: item.player
       });
-      console.log('html', html);
-      $('.profileContainerData').html(html);
     });
+    $('.profileContainerData').html(html);
   },
   fetchData: function () {
     var self = this;
@@ -39,5 +39,19 @@ app.profileVideosView = Backbone.View.extend({
     return url.then(function (response) {
       return response.response;
     })
+  },
+  popupVideoBlock: function (e) {
+    var $this = $(e.currentTarget);
+    var link = $this.data('idplayer');
+    console.log('$this', $this[0]);
+    console.log('link', link);
+    $.magnificPopup.open({
+      items: {
+        src: '<iframe src=' + link + ' width="100%" height="100%" frameborder="0" scrolling="0"></iframe>',
+        type: 'inline'
+      }
+    }, 0);
+    console.log('openPhotoHandler');
   }
-});
+})
+;

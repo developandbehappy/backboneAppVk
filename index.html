@@ -197,8 +197,12 @@
     </div>
 </script>
 <script id="videoContent" type="text/x-handlebars-template">
-    {{title}}
-    <img src="{{photoByVideo}}" alt="">
+    <div class="videoBlock" data-idPlayer="{{player}}">
+        <div class="imgContentVideo">
+            <img src="{{urlImgByVideo}}" alt="">
+        </div>
+        <h3>{{title}}</h3>
+    </div>
 </script>
 </body>
 </html>
