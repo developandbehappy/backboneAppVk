@@ -14,6 +14,7 @@ app.profileIndexView = Backbone.View.extend({
     this.profileAboutView = new app.profileAboutView();
     this.profilePostView = new app.profilePostView();
     this.profileAlbumView = new app.profileAlbumView();
+    this.profileVideosView = new app.profileVideosView();
   },
   navigate: function (type, params) {
     this.type = type || DEFAULT_TYPE;
@@ -26,16 +27,12 @@ app.profileIndexView = Backbone.View.extend({
     var self = this;
     this.token = app.token.getToken();
     this.fetchUserData().then(function (response) {
+      var onlineStatus = app.dataByUser.getOnlineById(response.online);
+      var userStatus = app.dataByUser.getDataStatus(response.status);
       var html = app.tpl.homeContent({
-        online: app.dataByUser.getOnlineById(response.online),
-        status: app.dataByUser.getDataStatus(response.status),
+        online: onlineStatus,
+        status: userStatus,
         uid: response.uid,
-        bdate: response.bdate,
-        sex: app.dataByUser.getSexById(response.sex),
-        country: response.country,
-        city: response.city,
-        has_mobile: response.has_mobile,
-        last_seen: app.dataByUser.getDateLastVisit(response.last_seen),
         avatarUrl: response.photo_max,
         firstName: response.first_name,
         lastName: response.last_name,
@@ -63,6 +60,11 @@ app.profileIndexView = Backbone.View.extend({
             self.profileAlbumView.renderAlbumList();
           });
         }
+      }
+      if (self.type === 'video') {
+        self.profileVideosView.fetchData().then(function () {
+          self.profileVideosView.render();
+        });
       }
     });
   },

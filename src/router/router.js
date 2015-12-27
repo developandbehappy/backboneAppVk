@@ -14,6 +14,7 @@ app.Router = Backbone.Router.extend({
     'post': 'profilePostHandler',
     'album': 'profileAlbumHandler',
     'album/:id': 'profileAlbumHandler',
+    'video': 'profileVideoHandler',
     'authByToken': 'authByTokenHandler'
   },
   profileHandler: function () {
@@ -34,6 +35,12 @@ app.Router = Backbone.Router.extend({
       this.profileIndexView.navigate('album', {
         id: id
       });
+    }
+  },
+  profileVideoHandler: function () {
+    if (this.isAuth()) {
+      this.baseHeaderView.render();
+      this.profileIndexView.navigate('video');
     }
   },
   authByTokenHandler: function () {

@@ -67,6 +67,12 @@ body {
     float: left;
 }
 
+#nameStatusUser small {
+    font-size: .5em;
+    position: relative;
+    bottom: 4px;
+}
+
 #nameStatusUser .status {
     cursor: pointer;
 }
@@ -154,7 +160,7 @@ body {
     border-radius: 0;
 }
 
-.profileContainerData div {
+.profileContainerData .thumb {
     width: 212px;
     height: 212px;
     display: inline-block;

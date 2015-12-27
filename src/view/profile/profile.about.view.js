@@ -11,10 +11,29 @@ app.profileAboutView = Backbone.View.extend({
     this.params = params;
   },
   render: function () {
-    var data = this.resultData;
+    var html = '';
     console.log("RENDER_ABOUT_COMPONENT");
-    var stringResult = JSON.stringify(data);
-    $('.profileContainerData').html("<h3>" + stringResult +"</h3>");
+    var data = this.resultData;
+    console.log('data', data);
+
+    data.map(function (item) {
+      var resultRelatives = app.dataByUser.getRelativesSibling(item.relatives)[0];
+      var sexProfile = app.dataByUser.getSexById(item.sex);
+      var lastSeen = app.dataByUser.getDateLastVisit(item.last_seen);
+      var familyStat = app.dataByUser.getRelationshipStatus(item.relation, item.sex);
+      html += app.tpl.aboutContent({
+        last_seen: lastSeen,
+        bdate: item.bdate,
+        sex: sexProfile,
+        country: item.country,
+        city: item.city,
+        has_mobile: item.has_mobile,
+        site: item.site,
+        relatives: resultRelatives.name,
+        relation: familyStat
+      });
+    });
+    $('.profileContainerData').html(html);
   },
   fetchData: function () {
     var self = this;
@@ -22,16 +41,17 @@ app.profileAboutView = Backbone.View.extend({
       self.resultData = result;
       return result;
     });
-  },
-  fetchAboutData: function () {
-    var dfd = jQuery.Deferred();
-    setTimeout(function () {
-      dfd.resolve({
-        about1: 'about123',
-        about2: 'dsada',
-        about3: '31231'
-      });
-    }, 300);
-    return dfd.promise();
   }
-});
+  ,
+  fetchAboutData: function () {
+    var url = app.vk.userGet({
+      fields: 'sex,city,bdate,country,online,has_mobile,last_seen,site,relatives,relation'
+    });
+    return url.then(function (response) {
+      var result = response.response;
+      self.resultData = result;
+      return result;
+    });
+  }
+})
+;

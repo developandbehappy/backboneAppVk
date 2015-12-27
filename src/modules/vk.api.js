@@ -37,5 +37,9 @@ app.vk = {
   getPhotosAlbum: function (params, token) {
     var url = this.buildLink('photos.get', params, token);
     return $.get(url);
+  },
+  getVideos: function (params, token) {
+    var url = this.buildLink('video.get', params, token);
+    return $.get(url);
   }
 };

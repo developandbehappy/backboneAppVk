@@ -18,6 +18,7 @@ app.profileAlbumView = Backbone.View.extend({
     var html = '';
     console.log("RENDER_ALBUM_COMPONENT");
     var data = this.resultData;
+    console.log('data', data);
     data.map(function (item) {
       html += app.tpl.albumItem({
         type: 'album_list',

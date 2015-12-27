@@ -25,7 +25,7 @@
 
 <script src="/src/modules/template.js"></script>
 <script src="/src/modules/token.js"></script>
-<script src="/src/modules/data.user.js"></script>
+<script src="/src/modules/user.data.js"></script>
 <script src="/src/modules/vk.api.js"></script>
 
 <script src="/src/view/base/base.header.view.js"></script>
@@ -34,6 +34,7 @@
 <script src="/src/view/profile/profile.post.view.js"></script>
 <script src="/src/view/profile/profile.album.view.js"></script>
 <script src="/src/view/profile/profile.photo.view.js"></script>
+<script src="/src/view/profile/profile.videos.view.js"></script>
 <!--<script src="/src/view/vkContentPhoto.js"></script>-->
 <!--<script src="/src/view/vkHeader.js"></script>-->
 <!--<script src="/src/view/vkContent.js"></script>-->
@@ -64,7 +65,7 @@
                  alt="">
         </div>
         <div id="nameStatusUser">
-            <h3>{{firstName}} {{lastName}}</h3>
+            <h3>{{firstName}} {{lastName}} <small>{{online}}</small></h3>
 
             <p class="status">{{status}}</p>
             <div class="input-group hide" id="statusGroup">
@@ -94,10 +95,10 @@
                 </li>
             </ul>
         </div>
-        <!--<div id="addFriendsWriteMess">-->
-        <!--<a href="#" type="button" class="btn btn-block">Добавить в друзья</a>-->
-        <!--<a href="#" type="button" class="btn btn-block">Написать сообщение</a>-->
-        <!--</div>-->
+        <div id="addFriendsWriteMess">
+            <a href="#" type="button" class="btn btn-block">Добавить в друзья</a>
+            <a href="#" type="button" class="btn btn-block">Написать сообщение</a>
+        </div>
     </div>
     <div class="clearfix"></div>
     <div id="navUserInfo" class="text-center">
@@ -105,12 +106,77 @@
             <li><a href="/#/">О себе</a></li>
             <li><a href="/#/post">Публикации</a></li>
             <li><a href="/#/album">Фотографии</a></li>
-            <li><a href="#">Видеозаписи</a></li>
-            <li><a href="#">Сообщества</a></li>
+            <li><a href="/#/video">Видеозаписи</a></li>
+            <li><a href="/#/">Сообщества</a></li>
         </ul>
     </div>
     <div class="profileContainerData">
 
+    </div>
+</script>
+<script id="aboutContent" type="text/x-handlebars-template">
+    <div class="aboutDataProfile">
+        <table class="table table-bordered table-striped col-xs-12">
+            <colgroup>
+                <col class="col-xs-2">
+                <col class="col-xs-10">
+            </colgroup>
+            <tbody>
+            <tr>
+                <th scope="row"><code>Веб-сайт</code></th>
+                <td>{{site}}</td>
+            </tr>
+            <tr>
+                <th scope="row"><code>Дата рождения:</code></th>
+                <td>{{bdate}}</td>
+            </tr>
+            <tr>
+                <th scope="row"><code>Номер телефона</code></th>
+                <td>Indicates a neutral informative change or action</td>
+            </tr>
+            <tr>
+                <th scope="row"><code>Страна</code></th>
+                <td>Indicates a warning that might need attention</td>
+            </tr>
+            <tr>
+                <th scope="row"><code>Город</code></th>
+                <td>Indicates a dangerous or potentially negative action</td>
+            </tr>
+            <tr>
+                <th scope="row"><code>Семейное положение</code></th>
+                <td>{{relation}}</td>
+            </tr>
+            <tr>
+                <th scope="row"><code>Язык</code></th>
+                <td>Indicates a dangerous or potentially negative action</td>
+            </tr>
+            <tr>
+                <th scope="row"><code>Родители</code></th>
+                <td>Indicates a dangerous or potentially negative action</td>
+            </tr>
+            <tr>
+                <th scope="row"><code>Братья, сестры</code></th>
+                <td>{{relatives}}</td>
+            </tr>
+            <tr>
+                <th scope="row"><code>Дети</code></th>
+                <td>Indicates a dangerous or potentially negative action</td>
+            </tr>
+            <tr>
+                <th scope="row"><code>Группы</code></th>
+                <td>Indicates a dangerous or potentially negative action</td>
+            </tr>
+            <tr>
+                <th scope="row"><code>Любимые цитаты</code></th>
+                <td>Indicates a dangerous or potentially negative action</td>
+            </tr>
+            <tr>
+                <th scope="row"><code>Политические взгляды</code></th>
+                <td>Indicates a dangerous or potentially negative action</td>
+            </tr>
+
+            </tbody>
+        </table>
     </div>
 </script>
 <script id="photoContent" type="text/x-handlebars-template">
@@ -129,6 +195,10 @@
             <img class="img-responsive" src="{{imageLink}}" alt="">
         </a>
     </div>
+</script>
+<script id="videoContent" type="text/x-handlebars-template">
+    {{title}}
+    <img src="{{photoByVideo}}" alt="">
 </script>
 </body>
 </html>

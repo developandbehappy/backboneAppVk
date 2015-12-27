@@ -14,6 +14,9 @@ app.tpl = {
   homeContent: function (context) {
     return this.getTpl(context, '#homeContent');
   },
+  aboutContent: function (context) {
+    return this.getTpl(context, '#aboutContent');
+  },
   albumItem: function (context) {
     return this.getTpl(context, '#albumItem');
   },
@@ -22,6 +25,9 @@ app.tpl = {
   },
   photoContent: function (context) {
     return this.getTpl(context, '#photoContent');
+  },
+  videoContent: function (context) {
+    return this.getTpl(context, '#videoContent');
   },
   getTpl: function (context, selector) {
     var source = $(selector).html();
