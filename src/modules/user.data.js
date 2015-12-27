@@ -35,6 +35,7 @@ app.dataByUser = {
   },
   getRelationshipStatus: function (statusId, sex) {
     var mapMan = {
+      0: 'Не выбрано',
       1: 'Не женат',
       2: 'В отношениях',
       3: 'Помолвлен',
@@ -44,6 +45,7 @@ app.dataByUser = {
       7: 'Влюблен'
     };
     var mapWoman = {
+      0: 'Не выбрано',
       1: 'Не замужем',
       2: 'В отношениях',
       3: 'Помолвлена',
